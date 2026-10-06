@@ -9,6 +9,18 @@ A full-stack movie discovery and recommendation platform that helps users find t
 ![GraphQL](https://img.shields.io/badge/GraphQL-API-e10098?style=flat-square&logo=graphql)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791?style=flat-square&logo=postgresql)
 
+## Project checkpoint
+
+Documentation reviewed 2026-10-05 against local source and manifests; application checks were not rerun for this review. Archive decision: archived at `archive/movie-night-picker/` (owner decision, 2026-10-05).
+
+**Current state:** Implemented Next.js/GraphQL monorepo with deployment configuration. The .NET sibling is a separate rewrite, not this application’s API.
+
+**Stack:** pnpm 10, Next.js, Express/Apollo GraphQL, Prisma/PostgreSQL, GraphQL Code Generator.
+
+**Resume here:** Start with `apps/web` and `apps/api`, and inspect `codegen.yml` before changing the GraphQL contract.
+
+**Agent guidance:** [AGENTS.md](AGENTS.md) contains the Codex/project instructions.
+
 ## Features
 
 ### SUGGEST - Personalized Recommendations
@@ -101,3 +113,18 @@ This product uses the [TMDB API](https://www.themoviedb.org) but is not endorsed
 ## License
 
 [AGPL-3.0](LICENSE)
+
+## Working reference
+
+- `apps/web/` — Next.js frontend
+- `apps/api/` — GraphQL API and Prisma persistence
+- `packages/shared-types/` — generated GraphQL types
+- `codegen.yml` — type-generation inputs
+
+### Commands
+
+- `pnpm install` and `pnpm dev` — workspace install and development servers
+- `pnpm typecheck` and `pnpm build` — primary validation
+- `pnpm lint` — configured lint; API/shared package lint scripts are placeholders
+- `pnpm codegen` — regenerate shared GraphQL types
+- `pnpm db:migrate` — development database migrations
